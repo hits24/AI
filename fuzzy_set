@@ -1,44 +1,58 @@
 import matplotlib.pyplot as plt
+
 X = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 y = [1, 2, 3, 4]
 membershipData = []
+
+
 def giveMembership(X, y):
- raw_membership = []
- for i in X:
- raw_membership.append(calculate(i, y))
- return raw_membership
+    raw_membership = []
+    for i in X:
+        raw_membership.append(calculate(i, y))
+    return raw_membership
+
+
 def calculateMembership(X, y):
- membership = []
- raw_membership = giveMembership(X, y)
- for i in raw_membership:
- if i > 1:
- membership.append(0)
- elif i > 0 and i <= 1:
- membership.append(1-i)
- elif i == 0:
- membership.append(1)
- return membership
+    membership = []
+    raw_membership = giveMembership(X, y)
+    for i in raw_membership:
+        if i > 1:
+            membership.append(0)
+        elif i > 0 and i <= 1:
+            membership.append(1-i)
+        elif i == 0:
+            membership.append(1)
+    return membership
+
+
 def calculate(x, y):
- result = abs((5/max(x, 5))-(x/max(x, 5)))
- result = y * result
- return result
+    result = abs((5/max(x, 5))-(x/max(x, 5)))
+    result = y * result
+    return result
+
+
 # membershipData.append(calculateMembership(X,y[0]))
 # print(membershipData)
+
 def plotGraph():
- X_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
- Y_data1 = calculateMembership(X, y[0])
- Y_data2 = calculateMembership(X, y[1])
- Y_data3 = calculateMembership(X, y[2])
- Y_data4 = calculateMembership(X, y[3])
- plt.plot(X_data, Y_data1)
- plt.plot(X_data, Y_data2)
- plt.plot(X_data, Y_data3)
- plt.plot(X_data, Y_data4)
- plt.xlabel('X')
- # naming the y axis
- plt.ylabel('Membership')
- # giving a title to my graph
- plt.title(f"Graph")
- # function to show the plot
- plt.show()
+    X_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    Y_data1 = calculateMembership(X, y[0])
+    Y_data2 = calculateMembership(X, y[1])
+    Y_data3 = calculateMembership(X, y[2])
+    Y_data4 = calculateMembership(X, y[3])
+    plt.plot(X_data, Y_data1)
+    plt.plot(X_data, Y_data2)
+    plt.plot(X_data, Y_data3)
+    plt.plot(X_data, Y_data4)
+    plt.xlabel('X')
+    # naming the y axis
+    plt.ylabel('Membership')
+
+    # giving a title to my graph
+    plt.title(f"Graph")
+
+    # function to show the plot
+    plt.show()
+
+
 plotGraph()
