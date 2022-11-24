@@ -1,0 +1,359 @@
+#include<stdio.h>
+#include <stdlib.h>
+int z=0;
+int n=0;
+int count=0;
+int pos;
+int i,j;
+int largest(int b[][9],int score[])
+{
+ // Initialize maximum element
+ int max = score[0];
+ // Traverse array elements from second and
+ // compare every element with current max
+ for (i = 0; i < count; i++)
+ {
+ if (score[i] > max)
+ {
+ max = score[i];
+ }
+ }
+ for(i=0;i<count;i++)
+ {
+ if(score[i]==max)
+ {
+ break;
+ }
+ }
+ printf("\n");
+ printf("Best possible move is ");
+ for(int j=0;j<=8;j++)
+ {
+ printf("%d",b[i][j]);
+ }
+ printf(" ");
+ printf(" Score %d",score[i]);
+}
+int score_calculator(int b[][9],int position[])
+{
+ int pos=0;
+ int score[count];
+ for(i=0;i<count;i++)
+{
+pos=position[i+1];
+ if(pos==0|| pos==2 || pos==6 ||pos==8)
+ {
+ if(pos==0)
+ {
+ if(b[i][pos+1]==1 && b[i][pos + 2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos+1]==2 && b[i][pos + 2]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos+3]==1 && b[i][pos + 6]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos+3]==2 && b[i][pos + 6]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos+4]==1 && b[i][pos+8]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos+4]==2 && b[i][pos+8]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=3;
+ }
+ }
+ else if(pos == 2)
+ {
+ if(b[i][pos-1]==1 && b[i][pos-2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-1]==2 && b[i][pos-2]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos + 3]==1 && b[i][pos+6]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos + 3]==2 && b[i][pos+6]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos +2]==1 && b[i][pos+4]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos +2]==2 && b[i][pos+4]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=3;
+ }
+ }
+ else if(pos==6)
+ {
+ if(b[i][pos +1]==1 && b[i][pos+2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos +1]==2 && b[i][pos+2]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-3]==1 && b[i][pos-6]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-3]==2 && b[i][pos-6]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-2]==1 && b[i][pos-4]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-2]==2 && b[i][pos-4]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=3;
+ }
+ }
+ else
+ {
+ if(b[i][pos-1]==1 && b[i][pos-2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-1]==2 && b[i][pos-2]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-3]==1 && b[i][pos-6]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-3]==2 && b[i][pos-6]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-4]==1 && b[i][pos-8]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-4]==2 && b[i][pos-8]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=3;
+ }
+ }
+ }
+ else if(pos==1 || pos ==3 || pos==5 || pos==7)
+ {
+ if(pos==1)
+ {
+ if(b[i][pos+3]==1 && b[i][pos+6]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos+3]==2 && b[i][pos+6]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-1]==1 && b[i][pos+1]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-1]==2 && b[i][pos+1]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=2;
+ }
+ }
+ else if(pos==3)
+ {
+ if(b[i][pos+1]==1 && b[i][pos +2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos+1]==2 && b[i][pos +2]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-3]==1 && b[i][pos+3]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-3]==2 && b[i][pos+3]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=2;
+ }
+ }
+ else if(pos==5)
+ {
+ if(b[i][pos-3]==1 && b[i][pos+3]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-3]==2 && b[i][pos+3]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-1]==1 && b[i][pos-2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-1]==2 && b[i][pos-2]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=2;
+ }
+ }
+ else
+ {
+ if(b[i][pos-3]==1 && b[i][pos-6]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-3]==2 && b[i][pos-6]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-1]==1 && b[i][pos+1]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-1]==2 && b[i][pos+1]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=2;
+ }
+ }
+}
+ else
+ {
+ if(b[i][pos-1]==1 && b[i][pos+1]==1)
+ {
+ score[i]=50;
+ // if(score[i]==60) }
+ }
+ else if(b[i][pos-1]==2 && b[i][pos+1]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-3]==1 && b[i][pos+3]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-3]==2 && b[i][pos+3]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos-4]==1 && b[i][pos+4]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos-4]==2 && b[i][pos+4]==2)
+ {
+ score[i]=60;
+ }
+ else if(b[i][pos+2]==1 && b[i][pos-2]==1)
+ {
+ score[i]=50;
+ }
+ else if(b[i][pos+2]==2 && b[i][pos-2]==2)
+ {
+ score[i]=60;
+ }
+ else
+ {
+ score[i]=4;
+ }
+ }
+}
+for(i=0;i<count;i++)
+{
+ printf("Posssible move no.%d ",i+1);
+for(j=0;j<=8;j++)
+{
+printf("%d",b[i][j]);
+}
+printf(" Score %d",score[i]);
+printf("\n");
+}
+largest(b,score);
+return 0;
+}
+int node_generator(int a[8])
+{
+ int position[9];
+ for(int i=0;i<=8;i++)
+ {
+ if(a[i]==0)
+ {
+ count=count+1;
+ position[count]=i;
+ }
+ }
+int b[count][9];
+int score[count];
+for(i=0;i<count;i++)
+{
+ for(j=0;j<=8;j++)
+ {
+ b[i][j]=a[j];
+ }
+}
+for(i=1;i<=count;i++)
+{
+ n=position[i];
+ for(j=0;j<1;j++)
+ {
+ b[j+z][n]=1;
+ }
+ z=z+1;
+}
+score_calculator(b,position);
+return 0;
+}
+int main()
+{
+ //int a[9] = {2, 0, 1, 2, 0, 2, 0, 0, 1}; //winning
+ //int a[9] = {1, 2, 1, 2, 1, 0, 0, 0, 0}; //blocking
+ int a[9] = {0, 2, 0, 1, 0, 0, 0, 0, 0}; //neither 
+ node_generator(a);
+ return 0;
+}
