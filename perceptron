@@ -6,25 +6,25 @@ X3=np.array([0,1,-1,1.5])
 desiredoutput=[1,-1,1]
 learning=1
 def f(net):
- if(net>0):
- return 1
- elif(net<0):
- return -1
- else:
- return net
+    if(net>0):
+        return 1
+    elif(net<0):
+        return -1
+    else:
+        return net
 O=[0,0,0]
 for i in range(100):
- net=np.dot(Wt,X1)
- O[0]=f(net)
- Wt=Wt+learning*(desiredoutput[0]-O[0])*X1
- net=np.dot(Wt,X2)
- O[1]=f(net)
- Wt=Wt+learning*(desiredoutput[1]-O[1])*X2
- net=np.dot(Wt,X3)
- O[2]=f(net)
- Wt=Wt+learning*(desiredoutput[2]-O[2])*X3
+    net=np.dot(Wt,X1)
+    O[0]=f(net)
+    Wt=Wt+learning*(desiredoutput[0]-O[0])*X1
+    net=np.dot(Wt,X2)
+    O[1]=f(net)
+    Wt=Wt+learning*(desiredoutput[1]-O[1])*X2
+    net=np.dot(Wt,X3)
+    O[2]=f(net)
+    Wt=Wt+learning*(desiredoutput[2]-O[2])*X3
  
- if(desiredoutput[0]==O[0]and desiredoutput[1]==O[1] and desiredoutput[2]==O[2]):
- break
+    if(desiredoutput[0]==O[0]and desiredoutput[1]==O[1] and desiredoutput[2]==O[2]):
+        break
 print("Weight Vector---",Wt)
 print("Epochs--",i+1)
